@@ -7,9 +7,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.81.165
+IP 51.250.81.165
 
 Frontend https://mesto80.students.nomoredomainsicu.ru
 
 Backend https://api.mesto80.students.nomoredomainsicu.ru
-
