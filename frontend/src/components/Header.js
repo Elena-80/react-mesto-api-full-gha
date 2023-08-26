@@ -6,17 +6,17 @@ function Header({location, email, onSignOut}) {
    return (
      <header className="header">
       <img className="header__logo" src={logo} alt="Логотип сайта" />
-         {(location.pathname === "/sign-up") && 
+         {(location.pathname === "/signup") && 
             <div className = "header__item">
-               <Link to = '/sign-in' className = "header__link">
+               <Link to = '/signin' className = "header__link">
                   Войти
                </Link>
             </div>
          }
 
-         {(location.pathname === "/sign-in") && 
+         {(location.pathname === "/signin") && 
             <div className = "header__item">
-               <Link to = '/sign-up' className="header__link">
+               <Link to = '/signup' className="header__link">
                   Регистрация
                </Link>
             </div>
@@ -25,7 +25,7 @@ function Header({location, email, onSignOut}) {
          {(location.pathname === "/") && 
             <div className = "header__item">
             <div className = "header__email">{email}</div>
-               <Link to = '/sign-in' className = "header__link header__link_logged" onClick = {onSignOut}>
+               <Link to = '/signin' className = "header__link header__link_logged" onClick = {onSignOut}>
                   Выйти
                </Link>
             </div>

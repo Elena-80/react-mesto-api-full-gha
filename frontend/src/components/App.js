@@ -33,6 +33,7 @@ function App() {
 
  useEffect(() => {
   document.body.style.backgroundColor = "black";
+  loggedIn &&
     api.getInitialCards()
       .then((items) => {
         setCards(items);
@@ -40,17 +41,18 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
       });
-  }, []);
+  }, [loggedIn]);
 
   useEffect(() => {
+    loggedIn &&
       api.getUserInfo()
         .then((info) => {
             setCurrentUser(info);
         })
         .catch((err) => {
-          console.log(`Ошибка: ${err}`);          
+          console.log(`Ошибка: ${err}`);
         });
-  }, []);
+  }, [loggedIn]);
 
 
 useEffect(() => {
@@ -82,7 +84,7 @@ function handleErrorMessage(message) {
 }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked)
         .then((newCard) => {
           setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
@@ -190,12 +192,12 @@ function handleCardDelete(card) {
              }
           />
             
-          <Route path='/sign-up' element={
+          <Route path='/signup' element={
                 <Register  handleErrorMessage={handleErrorMessage}/>
             } />
 
           <Route
-            path="/sign-in" element={
+            path="/signin" element={
               <Login
                 handleErrorMessage={handleErrorMessage}
                 onLogin={onLogin}
@@ -206,7 +208,7 @@ function handleCardDelete(card) {
           <Route
             path="*"
             element={
-              loggedIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />
+              loggedIn ? <Navigate to="/" /> : <Navigate to="/signin" />
             }
           />
 

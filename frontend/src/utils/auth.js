@@ -26,7 +26,6 @@ class Auth {
       });
   }
 
-
   authorize({email, password}) {
     const url = `${this._baseUrl}/signin`;
     return fetch(url, {
@@ -39,7 +38,14 @@ class Auth {
       .then(res => {
         if (res.ok) return res.json();
         return this._getErrorFromServer(res);
-      });
+      })
+      .then((data) => {
+        if (data.token) {
+          const { token } = data;
+          localStorage.setItem('jwt', token);
+          return token;
+        };
+      })
   }
 
   checkToken(token) {
@@ -58,6 +64,7 @@ class Auth {
   }
 }
 
-const auth = new Auth('https://auth.nomoreparties.co');
+const auth = new Auth('https://api.mesto80.students.nomoredomainsicu.ru');
+// const auth = new Auth('http://localhost:3000');
 
 export default auth;

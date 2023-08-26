@@ -27,7 +27,7 @@ function Register({ handleErrorMessage }) {
            text: "Вы успешно зарегистрировались!",
            isSuccess: true,
         });
-        navigate("/sign-in");
+        navigate("/signin");
       })
       .catch((err) => {
         const text = err.message || "Что-то пошло не так! Попробуйте еще раз.";
@@ -58,7 +58,7 @@ function Register({ handleErrorMessage }) {
 
           <p className="signin__text">
                 Уже зарегистрированы?{" "}
-            <Link className="signin__link" to="/sign-in">
+            <Link className="signin__link" to="/signin">
               Войти
             </Link>
           </p>
