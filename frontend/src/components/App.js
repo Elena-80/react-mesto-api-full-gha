@@ -92,7 +92,7 @@ function handleErrorMessage(message) {
         .catch((err) => {
           console.log(`Ошибка: ${err}`);
          });
-    } 
+    }
 
 function handleCardDelete(card) {
   api.deleteCard(card._id)

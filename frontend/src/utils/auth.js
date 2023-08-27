@@ -7,8 +7,10 @@ class Auth {
 
   _getErrorFromServer(res) {
     return res.json().then((res) => {
-      throw new Error(res.message);
+    //   throw new Error(res.message);
+    return Promise.reject(new Error(res.message));
     });
+  
   }
 
   register({email, password}) {
